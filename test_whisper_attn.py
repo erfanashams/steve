@@ -20,13 +20,13 @@ for i, block in enumerate(model.encoder.blocks):
 tokenizer = get_tokenizer(model.is_multilingual, language='en')
 
 # Define file/files list
-files = [f"TextGrid_sample/test_mono_channel.wav"]
-tg_phn, tg_wrd, tg_txt = ["phones", "words", None]
-alignment = "textgrid"
+# files = [f"TextGrid_sample/test_mono_channel.wav"]
+# tg_phn, tg_wrd, tg_txt = ["phones", "words", None]
+# alignment = "textgrid"
 
-# files = ["TIMIT_sample/LDC93S1.wav"]
-# tg_phn, tg_wrd, tg_txt = ["phn", "wrd", "txt"]
-# alignment = "timit"
+files = ["TIMIT_sample/LDC93S1.wav"]
+tg_phn, tg_wrd, tg_txt = ["phn", "wrd", "txt"]
+alignment = "timit"
 
 # Extract attentions
 attentions = []

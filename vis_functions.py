@@ -57,8 +57,8 @@ def major_minor_calculator(phd, chosen_frames_, spf, round_up):
     overlaps = []
     for k in range(len(minors["ticks"]) - 1):
         if minors["ticks"][k] == minors["ticks"][k + 1]:
-            print("similar", minors["labels"][k], minors["labels"][k + 1], minors["ticks"][k])
-            print(",".join([minors["labels"][k], minors["labels"][k + 1].split(",")[1:][0]]), minors["ticks"][k])
+            # print("similar", minors["labels"][k], minors["labels"][k + 1], minors["ticks"][k])
+            # print(",".join([minors["labels"][k], minors["labels"][k + 1].split(",")[1:][0]]), minors["ticks"][k])
             overlaps.append(k)
             # print(overlaps)
             minors["labels"][k] = ",".join([minors["labels"][k], minors["labels"][k + 1].split(",")[1:][0]])
@@ -68,7 +68,7 @@ def major_minor_calculator(phd, chosen_frames_, spf, round_up):
     for i, mj in enumerate(majors["ticks"]):
         for j, mn in enumerate(minors["ticks"]):
             if mn == mj and fixed != j - 1:
-                print(j)
+                # print(j)
                 majors["labels"][i] = f"{majors['labels'][i]} ({minors['labels'][j]})"
                 minors['labels'][j] = ""
                 fixed = j
