@@ -47,6 +47,9 @@ for i, block in enumerate(model.encoder.blocks):
     block.attn.register_forward_hook(
         lambda _, ins, outs, index=i: encoder_attn.__setitem__(index, outs[-1])
     )
+
+# Load Whisper tokenizer
+tokenizer = get_tokenizer(model.is_multilingual, language='en')
 ```
 Inference steps for whisper are given below:
 
