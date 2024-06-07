@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 ### How to use
 
-1. Extract the self-attention weights in the following format: N&times;1&times;M&times;K&times;Q, where N is the number of layers, M is the number of self-attention heads, K and Q are the Key and Query dimensions.
+1. Extract the self-attention weights in the following format: N&times;1&times;M&times;K&times;Q, where N is the number of layers, M is the number of self-attention heads, K and Q are the Key and Query dimensions respectively.
 For example the code below allows self-attention head extraction from whipsr-base model and stores them in `encoder_attn` variable after inference:
 
 ```python
