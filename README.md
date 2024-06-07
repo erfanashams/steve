@@ -16,11 +16,11 @@ git clone https://github.com/erfanashams/steve.git
 
 Navigate to w2v2viz folder and install the requirements:
 
-```
+```bash
 cd steve
 ```
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 1. Extract the self-attention weights in the following format: N&times;1&times;M&times;K&times;Q, where N is the number of layers, M is the number of self-attention heads, K and Q are the Key and Query dimensions.
 For example the code below allows self-attention head extraction from whipsr-base model and stores them in `encoder_attn` variable after inference:
 
-```angular2html
+```python
 import torch
 import librosa
 import whisper
@@ -50,10 +50,14 @@ for i, block in enumerate(model.encoder.blocks):
 
 # Load Whisper tokenizer
 tokenizer = get_tokenizer(model.is_multilingual, language='en')
+
+# ...
 ```
 Inference steps for whisper are given below:
 
-```angular2html
+```python
+# ...
+
 file = "path_to_your_wav_file"
 speech_, sr_ = librosa.load(path=file, sr=16000)
 speech_ = torch.from_numpy(speech_).float()
@@ -69,16 +73,24 @@ mel = whisper.log_mel_spectrogram(whisper.pad_or_trim(speech_)).to(DEVICE)
 
 with torch.no_grad():
     logits = model(mel.unsqueeze(0), tokens.unsqueeze(0))
+
+# ...
 ```
 The audio sample per frame `spf` is also needed to be calculated or extracted from the model parameters.
 Refer to the paper for this step. For all whisper models spf is 320.
 
-```angular2html
+```python
+# ...
+
 spf = 320
+
+# ...
 ```
 2. Import and run the visualiser using the required ad optional parameters:
 
-```angular2html
+```python
+# ...
+
 from steve import STEVE
 
 
