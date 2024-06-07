@@ -103,6 +103,9 @@ Optional parameters
 > [!TIP]
 > Complete examples for Whisper (`text_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files.
 
+> [!IMPORTANT]
+> You may need to enable interactive mode for `Jupyter` notebooks.
+> 
 ### Cite as
 
 ```angular2html
