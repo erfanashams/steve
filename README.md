@@ -105,11 +105,11 @@ Required parameters:
 + spf: audio sample per frame of the model.
 
 Optional parameters:
-- alignments: "timit" or "textgrid" if alignments in any of the given formats are available.
-- tg_phone: textgrid phone tier name or TIMIT style phonetic alignment file extension (e.g., phn).
-- tg_word: textgrid word tier name or TIMIT style word alignment file extension (e.g., wrd).
-- tg_phone: textgrid text tier name or TIMIT style text file extension (e.g., txt).
-- tg_ext: extension of the textgrid files (e.g., TextGrid).
+- alignments: `"timit"` or `"textgrid"` if alignments in any of the given formats are available.
+- tg_phone: textgrid phone tier name or TIMIT style phonetic alignment file extension (e.g., `"phn"`).
+- tg_word: textgrid word tier name or TIMIT style word alignment file extension (e.g., `"wrd"`).
+- tg_phone: textgrid text tier name or TIMIT style text file extension (e.g., `"txt"`).
+- tg_ext: extension of the textgrid files (e.g., `"TextGrid"`).
 - debug: display various steps during the visualisation process.
 
 > [!TIP]
