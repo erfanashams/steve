@@ -116,8 +116,11 @@ Optional parameters
 > Complete examples for Whisper (`text_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files.
 
 > [!IMPORTANT]
+> The wav2vec 2.0 from the `transformers` module returns self-attention weights after softmax. This behaviour does not allow the visualiser to show the weights without the softmax function applied. A workaround would be to return the non-softmax version by modifying the source code. The patch file in the wav2vec2_patch directory demonstrates which lines need to be modified in the source.
+
+> [!IMPORTANT]
 > You may need to enable interactive mode for `Jupyter` notebooks.
-> 
+
 ### Cite as
 
 ```angular2html
