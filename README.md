@@ -77,7 +77,7 @@ with torch.no_grad():
 # ...
 ```
 The audio sample per frame `spf` is also needed to be calculated or extracted from the model parameters.
-Refer to the paper for this step. For all whisper models spf is 320.
+Refer to the paper for this step. For all whisper models spf is 320, but may need to be calculated for other models such as wav2vec 2.0 (refer tp `test_wav2vec2_attn.py`).
 
 ```python
 # ...
