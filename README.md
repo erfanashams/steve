@@ -1,4 +1,5 @@
 # STEVE (Speech Transformer Exploratory Visual Environment)
+This is a tool for visualising self-attention weights in transformer-based speech recognition models with or without time-aligned annotations.
 
 ![STEVE screenshot annotated.](/assets/images/STEVE_explained.png)
 
