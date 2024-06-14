@@ -101,17 +101,17 @@ steve.plot_attentions(file_name=[file], attention=[encoder_attn], spf=[spf],
                       tg_ext="textgrid", debug=False)
 ```
 Required parameters:
-+ file_name: string literal of the wav file or a list of files.
-+ attention: the extracted attentions or a list of extracted attentions mentioned above.
-+ spf: audio sample per frame of the model.
++ **file_name**: string literal of the wav file or a list of files.
++ **attention**: the extracted attentions or a list of extracted attentions mentioned above.
++ **spf**: audio sample per frame of the model.
 
 Optional parameters:
-- alignments: `"timit"` or `"textgrid"` if alignments in any of the given formats are available.
-- tg_phone: textgrid phone tier name or TIMIT style phonetic alignment file extension (e.g., `"phn"`).
-- tg_word: textgrid word tier name or TIMIT style word alignment file extension (e.g., `"wrd"`).
-- tg_phone: textgrid text tier name or TIMIT style text file extension (e.g., `"txt"`).
-- tg_ext: extension of the textgrid files (e.g., `"TextGrid"`).
-- debug: display various steps during the visualisation process.
+- **alignments**: `"timit"` or `"textgrid"` if alignments in any of the given formats are available.
+- **tg_phone**: textgrid phone tier name or TIMIT style phonetic alignment file extension (e.g., `"phn"`).
+- **tg_word**: textgrid word tier name or TIMIT style word alignment file extension (e.g., `"wrd"`).
+- **tg_phone**: textgrid text tier name or TIMIT style text file extension (e.g., `"txt"`).
+- **tg_ext**: extension of the textgrid files (e.g., `"TextGrid"`).
+- **debug**: display various steps during the visualisation process.
 
 > [!TIP]
 > Complete examples for Whisper (`text_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files.
