@@ -101,15 +101,15 @@ def phonetic_class_annotator(phone_details, spf, mode="", debug=False, hidden_st
                         frames_.append(hidden_state_[t])
                 overlap = False
 
-        if start_[-1] != stop_[-1]:
-            # add the last frame
-            if phone_only:
-                targets.loc[len(targets)] = phone_details["utterance"][-1]
-            else:
-                targets.loc[len(targets)] = map_table.loc[map_table[phone_c] == phone_details["utterance"][-1]].values[0]
-            if hidden_state_ is not None:
-                frames_.append(hidden_state_[t+1])
-            # print(p, targets[-1])
+        # if start_[-1] == stop_[-1]:
+        #     # add the last frame
+        #     if phone_only:
+        #         targets.loc[len(targets)] = phone_details["utterance"][-1]
+        #     else:
+        #         targets.loc[len(targets)] = map_table.loc[map_table[phone_c] == phone_details["utterance"][-1]].values[0]
+        #     if hidden_state_ is not None:
+        #         frames_.append(hidden_state_[t+1])
+        #     # print(p, targets[-1])
 
     if hidden_state_ is None:
         return targets
