@@ -4,10 +4,16 @@ from steve import STEVE
 import whisper
 from whisper.tokenizer import get_tokenizer
 
+
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 model_size = "base"
 model = whisper.load_model(model_size).to(DEVICE)
+
+if model_size == "large-v3":
+    n_mels = 128
+else:
+    n_mels = 80
 
 # install hooks on the encoder attention layers to retrieve the attention weights
 encoder_attn = [None] * model.dims.n_audio_layer
@@ -43,7 +49,7 @@ for file in files:
         ]
     ).to(DEVICE)
 
-    mel = whisper.log_mel_spectrogram(whisper.pad_or_trim(speech_)).to(DEVICE)
+    mel = whisper.log_mel_spectrogram(whisper.pad_or_trim(speech_), n_mels=n_mels).to(DEVICE)
     with torch.no_grad():
         logits = model(mel.unsqueeze(0), tokens.unsqueeze(0))
 
