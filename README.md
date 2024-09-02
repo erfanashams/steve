@@ -127,5 +127,18 @@ Optional parameters:
 ### Cite as
 
 ```angular2html
-TBA
+@InProceedings{10.1007/978-3-031-70566-3_8,
+author="Shams, Erfan A.
+and Carson-Berndsen, Julie",
+editor="N{\"o}th, Elmar
+and Hor{\'a}k, Ale{\v{s}}
+and Sojka, Petr",
+title="Attention to Phonetics: A Visually Informed Explanation of Speech Transformers",
+booktitle="Text, Speech, and Dialogue",
+year="2024",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="81--93",
+isbn="978-3-031-70566-3"
+}
 ```
