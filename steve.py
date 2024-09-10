@@ -46,7 +46,7 @@ class STEVE:
             # utterance = alignment_reader(file_name, alignments, sample_rate=16000)
             if ["b", "d", "f"] not in utterance["phonetic_detail"]["utterance"]:
                 self.dummy_phones = False
-        elif alignments == "textgrid":
+        elif alignments.lower() == "textgrid":
             utterance = textgrid_reader(file_name, phone_tier=tg_phone, word_tier=tg_word, text_tier=tg_text,
                                         tg_ext=tg_ext, sample_rate=16000)
             # WIP: unify readers
@@ -65,7 +65,7 @@ class STEVE:
         return utterance
 
     def plot_attentions(self, file_name, attention, spf,
-                        alignments=None, tg_phone=None, tg_word=None, tg_text=None, tg_ext="textgrid",
+                        alignments=None, tg_phone=None, tg_word=None, tg_text=None, tg_ext="TextGrid",
                         speakers=[], debug=False):
         '''
         Plots attention

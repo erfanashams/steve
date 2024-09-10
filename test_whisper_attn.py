@@ -65,4 +65,4 @@ for file in files:
 steve = STEVE()
 steve.plot_attentions(file_name=files, attention=attentions, spf=spfs,
                       alignments=alignment, tg_phone=tg_phn, tg_word=tg_wrd, tg_text=tg_txt,
-                      tg_ext="textgrid", debug=False)
+                      tg_ext="TextGrid", debug=False)
