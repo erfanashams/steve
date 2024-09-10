@@ -28,7 +28,9 @@ pip install -r requirements.txt
 ### How to use
 
 1. Extract the self-attention weights in the following format: N&times;1&times;M&times;K&times;Q, where N is the number of layers, M is the number of self-attention heads, K and Q are the Key and Query dimensions respectively.
-For example the code below allows self-attention head extraction from whipsr-base model and stores them in `encoder_attn` variable after inference:
+For example, the code below allows self-attention head extraction from the Whipsr-base model and stores them in the `encoder_attn` variable with the dimension 6&times;1&times;8&times;1500&times;1500:
+
+Load Whisper-base model and install forward hooks on self-attention heads:
 
 ```python
 import torch
@@ -114,7 +116,7 @@ Optional parameters:
 - **debug**: display various steps during the visualisation process.
 
 > [!TIP]
-> Complete examples for Whisper (`text_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files.
+> Complete examples for Whisper (`test_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files.
 
 > [!IMPORTANT]
 > The **wav2vec 2.0** from the `transformers` module returns self-attention weights after softmax. This behaviour does not allow the visualiser to show the weights without the softmax function applied. A workaround would be to return the non-softmax version by modifying the source code. The patch file in the `wav2vec2_patch` directory demonstrates which lines need to be modified in the source.
@@ -125,5 +127,18 @@ Optional parameters:
 ### Cite as
 
 ```angular2html
-TBA
+@InProceedings{10.1007/978-3-031-70566-3_8,
+author="Shams, Erfan A.
+and Carson-Berndsen, Julie",
+editor="N{\"o}th, Elmar
+and Hor{\'a}k, Ale{\v{s}}
+and Sojka, Petr",
+title="Attention to Phonetics: A Visually Informed Explanation of Speech Transformers",
+booktitle="Text, Speech, and Dialogue",
+year="2024",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="81--93",
+isbn="978-3-031-70566-3"
+}
 ```
