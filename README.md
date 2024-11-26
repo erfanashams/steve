@@ -116,7 +116,7 @@ Optional parameters:
 - **debug**: display various steps during the visualisation process.
 
 > [!TIP]
-> Complete examples for Whisper (`test_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files.
+> Complete examples for Whisper (`test_whisper_attn.py`) and wav2vec 2.0 (`test_wav2vec2_attn.py`) with annotations are available in the mentioned files. The audio files for TIMIT are taken from the free sample at https://catalog.ldc.upenn.edu/LDC93S1, and the TextGrid sample is taken from L2-ARCTIC at https://psi.engr.tamu.edu/l2-arctic-corpus/.
 
 > [!IMPORTANT]
 > The **wav2vec 2.0** from the `transformers` module returns self-attention weights after softmax. This behaviour does not allow the visualiser to show the weights without the softmax function applied. A workaround would be to return the non-softmax version by modifying the source code. The patch file in the `wav2vec2_patch` directory demonstrates which lines need to be modified in the source.
@@ -126,7 +126,7 @@ Optional parameters:
 
 ### Cite as
 
-```angular2html
+```BibTex
 @InProceedings{10.1007/978-3-031-70566-3_8,
 author="Shams, Erfan A.
 and Carson-Berndsen, Julie",

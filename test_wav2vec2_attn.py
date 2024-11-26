@@ -20,7 +20,7 @@ for i, block in enumerate(model.encoder.layers):
     )
 
 # Define file/files list
-# files = [f"TextGrid_sample/test_mono_channel.wav"]
+# files = [f"TextGrid_sample/arctic_a0001.wav"]
 # tg_phn, tg_wrd, tg_txt = ["phones", "words", None]
 # alignment = "textgrid"
 

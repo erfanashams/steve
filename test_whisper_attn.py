@@ -26,7 +26,7 @@ for i, block in enumerate(model.encoder.blocks):
 tokenizer = get_tokenizer(model.is_multilingual, language='en')
 
 # Define file/files list
-# files = [f"TextGrid_sample/test_mono_channel.wav"]
+# files = [f"TextGrid_sample/arctic_a0001.wav"]
 # tg_phn, tg_wrd, tg_txt = ["phones", "words", None]
 # alignment = "textgrid"
 
@@ -65,4 +65,4 @@ for file in files:
 steve = STEVE()
 steve.plot_attentions(file_name=files, attention=attentions, spf=spfs,
                       alignments=alignment, tg_phone=tg_phn, tg_word=tg_wrd, tg_text=tg_txt,
-                      tg_ext="TextGrid", debug=False)
+                      tg_ext="textgrid", debug=False)
