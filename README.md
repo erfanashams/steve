@@ -6,9 +6,6 @@ This is a tool for visualising self-attention weights in transformer-based speec
 ## Developers/Authors
 Erfan A. Shams, Julie Carson-Berndsen
 
-## Publication
-TBA
-
 ## Installation and Usage
 Clone the repository using the command below:
 ```bash
