@@ -30,7 +30,8 @@ pip install -r requirements.txt
 1. Extract the self-attention weights in the following format: N&times;1&times;M&times;K&times;Q, where N is the number of layers, M is the number of self-attention heads, K and Q are the Key and Query dimensions respectively.
 For example, the code below allows self-attention head extraction from the Whipsr-base model and stores them in the `encoder_attn` variable with the dimension 6&times;1&times;8&times;1500&times;1500:
 
-> [!WARNING] This method of registering forward hook is tested and works on version 20231117, however, it does not work with version 20240930 (or possibly newer). You may want to use the HuggingFace version for extrcting the self-attention weights.
+> [!WARNING] 
+> This method of registering forward hook is tested and works on version 20231117, however, it does not work with version 20240930 (or possibly newer). You may want to use the HuggingFace version for extrcting the self-attention weights.
 
 Load Whisper-base model and install forward hooks on self-attention heads:
 
