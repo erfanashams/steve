@@ -4,7 +4,7 @@ from steve import STEVE
 import whisper
 from whisper.tokenizer import get_tokenizer
 
-
+print(whisper.__version__)
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 model_size = "base"
@@ -45,7 +45,6 @@ for file in files:
     tokens = torch.tensor(
         [
             *tokenizer.sot_sequence,
-            tokenizer.timestamp_begin,
         ]
     ).to(DEVICE)
 
