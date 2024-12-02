@@ -1,3 +1,8 @@
+"""
+This test file is for the newer versions of Whisper (v20240930 and newer).
+It should work on the older versions as well.
+"""
+
 import torch
 import librosa
 from steve import STEVE
@@ -15,11 +20,19 @@ if model_size == "large-v3":
 else:
     n_mels = 80
 
-# install hooks on the encoder attention layers to retrieve the attention weights
+# create an empty list for the encoder attentions and install hooks on the QKs to retrieve the attention weights
 encoder_attn = [None] * model.dims.n_audio_layer
+
+encoder_attn_q = [None] * model.dims.n_audio_layer
 for i, block in enumerate(model.encoder.blocks):
-    block.attn.register_forward_hook(
-        lambda _, ins, outs, index=i: encoder_attn.__setitem__(index, outs[-1])
+    block.attn.query.register_forward_hook(
+        lambda _, ins, outs, index=i: encoder_attn_q.__setitem__(index, outs)
+    )
+
+encoder_attn_k = [None] * model.dims.n_audio_layer
+for i, block in enumerate(model.encoder.blocks):
+    block.attn.key.register_forward_hook(
+        lambda _, ins, outs, index=i: encoder_attn_k.__setitem__(index, outs)
     )
 
 # Load Whisper tokenizer
@@ -51,6 +64,20 @@ for file in files:
     mel = whisper.log_mel_spectrogram(whisper.pad_or_trim(speech_), n_mels=n_mels).to(DEVICE)
     with torch.no_grad():
         logits = model(mel.unsqueeze(0), tokens.unsqueeze(0))
+
+    # calculate the self-attention weights from QKs
+    for i_l in range(model.dims.n_audio_layer):
+        i_h = 0
+        print(i_l)
+        attention_weights = torch.zeros(1, model.dims.n_audio_head, encoder_attn_q[0].shape[1],
+                                        encoder_attn_q[0].shape[1]).to(DEVICE)
+        for i_h in range(model.dims.n_audio_head):
+            print(" ", i_h * 64, i_h * 64 + 64)
+            Q = encoder_attn_q[i_l][:, :, i_h * 64:i_h * 64 + 64]
+            K = encoder_attn_k[i_l][:, :, i_h * 64:i_h * 64 + 64]
+
+            attention_weights[0, i_h] = torch.matmul(Q, K.transpose(-2, -1)) / (K.size(-1) ** 0.5)
+        encoder_attn[i_l] = attention_weights
 
     spf = whisper.audio.HOP_LENGTH * 2
 
