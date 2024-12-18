@@ -307,7 +307,7 @@ def timitdata_reader(wavfilepath, phn_ext=None, wrd_ext=None, txt_ext=None):
     if os.path.isfile(phn_file):
         dummy_phones = False
         phn_detail = pd.read_csv(phn_file, header=None, names=['start', 'stop', 'utterance'],
-                                 delim_whitespace=True)
+                                 sep='\s+')
     else:
         print(f"Phonetic details not found: ({phn_file})")
         dummy_phones = True
@@ -319,7 +319,7 @@ def timitdata_reader(wavfilepath, phn_ext=None, wrd_ext=None, txt_ext=None):
     if os.path.isfile(wrd_file):
         dummy_words = False
         wrd_detail = pd.read_csv(wrd_file, header=None, names=['start', 'stop', 'utterance'],
-                                 delim_whitespace=True)
+                                 sep='\s+')
         # if the phones are dummies, need to re-adjust them to the word transcriptiosn
         if dummy_phones:
             phn_detail = wrd_detail.to_dict(orient="list")
@@ -534,7 +534,7 @@ def alignment_reader(wavfilepath, alignments, phone_tier=None, word_tier=None, t
     if alignments.lower() == "timit" and os.path.isfile(phn_file):
         dummy_phones = False
         phn_detail = pd.read_csv(phn_file, header=None, names=['start', 'stop', 'utterance'],
-                                 delim_whitespace=True)
+                                 sep='\s+')
     elif alignments.lower() == "textgrid" and phone_tier is not None and phone_tier in grid:
         dummy_phones = False
         phn_detail = {"start": [], "stop": [], "utterance": []}
@@ -552,7 +552,7 @@ def alignment_reader(wavfilepath, alignments, phone_tier=None, word_tier=None, t
     if alignments.lower() == "timit" and os.path.isfile(wrd_file):
         dummy_words = False
         wrd_detail = pd.read_csv(wrd_file, header=None, names=['start', 'stop', 'utterance'],
-                                 delim_whitespace=True)
+                                 sep='\s+')
         # if the phones are dummies, need to re-adjust them to the word transcriptiosn
         if dummy_phones:
             phn_detail = wrd_detail.to_dict(orient="list")
